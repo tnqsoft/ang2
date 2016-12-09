@@ -6,7 +6,8 @@ export enum Ng2LoadingEventType {
   PROGRESS,
   HEIGHT,
   COLOR,
-  VISIBLE
+  VISIBLE,
+  DISABLED
 }
 
 export class Ng2LoadingEvent {
@@ -24,6 +25,7 @@ export class Ng2LoadingService {
   private _height: string = '2px';
   private _color: string = '#DD0031';
   private _visible: boolean = true;
+  private _disabled: boolean = false;
 
   private _intervalCounterId: any = 0;
   public interval: number = 500; // in milliseconds
@@ -78,6 +80,17 @@ export class Ng2LoadingService {
     return this._visible;
   }
 
+  set disabled(value: boolean) {
+    if (isPresent(value)) {
+      this._disabled = value;
+      this.emitEvent(new Ng2LoadingEvent(Ng2LoadingEventType.DISABLED, this._disabled));
+    }
+  }
+
+  get disabled(): boolean {
+    return this._disabled;
+  }
+
   private emitEvent(event: Ng2LoadingEvent) {
     if (this.events) {
       // Push up a new event
@@ -87,6 +100,9 @@ export class Ng2LoadingService {
 
 
   start(onCompleted: Function = null) {
+    if(this.disabled === true) {
+      return;
+    }
     // Stop current timer
     this.stop();
     // Make it visible for sure
@@ -103,6 +119,9 @@ export class Ng2LoadingService {
   }
 
   stop() {
+    if(this.disabled === true) {
+      return;
+    }
     if (this._intervalCounterId) {
       clearInterval(this._intervalCounterId);
       this._intervalCounterId = null;
@@ -110,11 +129,17 @@ export class Ng2LoadingService {
   }
 
   reset() {
+    if(this.disabled === true) {
+      return;
+    }
     this.stop();
     this.progress = 0;
   }
 
   complete() {
+    if(this.disabled === true) {
+      return;
+    }
     this.progress = 100;
     this.stop();
     setTimeout(() => {
@@ -125,6 +150,16 @@ export class Ng2LoadingService {
         this.progress = 0;
       }, 250);
     }, 250);
+  }
+
+  enabledLoading() {
+    this.reset();
+    this.disabled = false;
+  }
+
+  disabledLoading() {
+    this.reset();
+    this.disabled = true;
   }
 
 }

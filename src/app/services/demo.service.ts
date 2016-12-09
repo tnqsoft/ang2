@@ -13,11 +13,16 @@ import 'rxjs/add/operator/toPromise';
 
 import { User } from './models/user';
 
+import { Ng2LoadingService } from '../shared/ng2-loading';
+
 @Injectable()
 export class DemoService {
   private users: Observable<Array<User>>;
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    private ng2LoadingService: Ng2LoadingService
+  ) { }
 
   getList(): Observable<Array<User>> {
     return Observable.create(observer => {
@@ -36,4 +41,12 @@ export class DemoService {
     return this.http.get('http://localhost:3000/api/slow')
         .map((response: Response) => response.json());
   }
+
+  getSlowRequestWithoutLoading(): Observable<any> {
+    this.ng2LoadingService.disabledLoading();
+    // get users from api
+    return this.http.get('http://localhost:3000/api/slow')
+        .map((response: Response) => response.json());
+  }
+
 }

@@ -153,7 +153,11 @@ export class HttpService extends Http {
    * Response interceptor.
    */
   private responseInterceptor(): void {
-    this.ng2LoadingService.complete();
+    if (this.ng2LoadingService.disabled === true) {
+      this.ng2LoadingService.enabledLoading();
+    } else {
+      this.ng2LoadingService.complete();
+    }
   }
 
   /**

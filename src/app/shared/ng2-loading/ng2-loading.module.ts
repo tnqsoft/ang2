@@ -3,12 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { Ng2LoadingComponent } from './ng2-loading.component';
 import { Ng2LoadingService, ng2LoadingServiceFactory } from './ng2-loading.service';
+import { SafeUrlPipe } from '../pipe/safe-url.pipe';
 
 export let providers = [{ provide: Ng2LoadingService, useFactory: ng2LoadingServiceFactory }];
 
 @NgModule({
   imports: [BrowserModule, CommonModule],
-  declarations: [Ng2LoadingComponent],
+  declarations: [Ng2LoadingComponent, SafeUrlPipe],
   exports: [Ng2LoadingComponent],
   providers: providers
 })

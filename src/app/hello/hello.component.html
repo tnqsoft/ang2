@@ -16,18 +16,12 @@
 <p>
   <button type="button" (click)="testSlowRequest()" [disabled]="loading">
     Call Slow Api
+  </button>
+</p>
+
+<p>
+  <button type="button" (click)="testSlowRequestWithoutLoading()" [disabled]="loading">
+    Call Slow Api Without Loading
     <img src="assets/image/loading.gif" *ngIf="loading"/>
-  </button>
-</p>
-
-<p>
-  <button type="button" (click)="showLoading()">
-    Show Loading Bar
-  </button>
-</p>
-
-<p>
-  <button type="button" (click)="completeLoading()">
-    Complete Loading Bar
   </button>
 </p>

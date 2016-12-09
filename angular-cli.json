@@ -18,7 +18,6 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "../node_modules/ng2-slim-loading-bar/style.css",
         "styles.css"
       ],
       "scripts": [],

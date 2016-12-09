@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 import { Ng2LoadingService, Ng2LoadingEvent, Ng2LoadingEventType } from './ng2-loading.service';
 import { isPresent } from './ng2-loading.util';
 
@@ -13,11 +12,12 @@ export class Ng2LoadingComponent implements OnInit {
   @Input() progress: string = '0';
   @Input() color: string = '#DD0031';
   @Input() height: string = '2px';
-  @Input() show: boolean = true;
+  @Input() show: boolean = false;
+  @Input() spinner: string = '';
 
-  private visible: boolean = false;
-
-  constructor(public service: Ng2LoadingService) { }
+  constructor(
+    public service: Ng2LoadingService
+  ) { }
 
   ngOnInit() {
     this.service.events.subscribe((event: Ng2LoadingEvent) => {
@@ -29,7 +29,6 @@ export class Ng2LoadingComponent implements OnInit {
         this.height = event.value;
       } else if (event.type === Ng2LoadingEventType.VISIBLE) {
         this.show = event.value;
-        this.visible = this.service.visible;
       }
     });
   }
