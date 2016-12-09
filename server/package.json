@@ -1,0 +1,33 @@
+{
+  "name": "lab-api",
+  "version": "0.1.0",
+  "description": "Lab Api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tnqsoft"
+  },
+  "keywords": [
+    "demo",
+    "lab"
+  ],
+  "author": "Nguyen Nhu Tuan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tnqsoft/issues"
+  },
+  "homepage": "https://github.com/tnqsoft",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "compression": "^1.6.1",
+    "cors": "^2.7.1",
+    "dotenv": "^0.4.0",
+    "errorhandler": "^1.4.3",
+    "express": "^4.13.4",
+    "lodash": "^2.4.2",
+    "morgan": "^1.7.0"
+  }
+}
