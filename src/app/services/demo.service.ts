@@ -30,4 +30,10 @@ export class DemoService {
             });
     });
   }
+
+  getSlowRequest(): Observable<any> {
+    // get users from api
+    return this.http.get('http://localhost:3000/api/slow')
+        .map((response: Response) => response.json());
+  }
 }

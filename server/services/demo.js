@@ -1,5 +1,6 @@
 var express = require('express'),
-    _       = require('lodash');
+    _       = require('lodash'),
+    sleep   = require('sleep');
 
 var app = module.exports = express.Router();
 
@@ -31,5 +32,14 @@ app.get('/api/demo', function(req, res) {
 // Get Config
 app.get('/api/configs', function(req, res) {
   res.status(200).send(configs);
+});
+
+// Demo slow api request
+app.get('/api/slow', function(req, res) {
+  let waitInSecond = 5;
+  sleep.sleep(waitInSecond);
+  res.status(200).send({
+    message: 'Demo Slow API in ' + waitInSecond + ' second.'
+  });
 });
 // -----------------------------------------------------------------------

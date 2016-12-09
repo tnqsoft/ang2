@@ -9,3 +9,16 @@
 <p>
   {{ configService.config | json }}
 </p>
+
+<hr/>
+
+<h2>Test with slow request</h2>
+<p>
+  <button
+    type="button"
+    (click)="testSlowRequest()"
+    [disabled]="loading"
+    >
+    Call Slow Api
+  </button>
+</p>
