@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { LoadingComponent } from './loading.component';
+import { Ng2LoadingComponent } from './ng2-loading.component';
 
-describe('LoadingComponent', () => {
-  let component: LoadingComponent;
-  let fixture: ComponentFixture<LoadingComponent>;
+describe('Ng2LoadingComponent', () => {
+  let component: Ng2LoadingComponent;
+  let fixture: ComponentFixture<Ng2LoadingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoadingComponent ]
+      declarations: [ Ng2LoadingComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoadingComponent);
+    fixture = TestBed.createComponent(Ng2LoadingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
